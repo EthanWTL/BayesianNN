@@ -44,6 +44,13 @@ Which indicating that we know the posterior is proportional to a known function 
 
 ## MCMC:
 
+ ```Markov Chain:``` Each variable $z$ is going to be one of the state in Markov Chain. The steady state is our target varible set.
+ 
+ ```Hamiltonian Monte Carlo:``` Introducing physic idea position and momentum for better state candidate proposal.
+ 
+ ```No-U-Turn-Sampler:``` eliminating the long term U-turn path, auto tune step size and time in leapfrog method.
+
+ Now, let's walk through the experiment with all the knowledge that we mentioned before.
 
 
 ## Variational Inference:
