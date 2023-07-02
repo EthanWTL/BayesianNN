@@ -5,7 +5,7 @@
 ![Licence](https://img.shields.io/github/license/EthanWTL/BayesianNN)
 ![Issues](https://img.shields.io/github/issues/EthanWTL/BayesianNN)
 
-Welcome,
+Welcome, :grinning:
 
 This is a repo associate with the ongoing paper [A Survey about Bayesian Inference Power in Math and Machine Learning Perspectives](Bayesian_Inference_first_draft.pdf)
 
@@ -18,24 +18,21 @@ But there is lack of research that compiling all methods on the track together -
 
 ---
 ## Backgrounds review: 
-### Bayesian Theorem:
-Basic Bayesian Theorem in Math field.
+### 1. Bayesian Theorem:
 
 ```Joint Probability Theorem:``` $P(A\mid B) = \frac{\lvert A \cap B \rvert}{\lvert B \rvert}= \frac {P(A \cap B)}{P(B)}$
 
 ```Bayesian Inference:``` $P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}$
 
 
-### Bayesian Neural Network:
-BNN will focus on weight as distribution, so targeting on finding $z$ as latent variable, the posterios is usually intractable.
+### 2. Bayesian Neural Network:
 
 ```latent variables:``` $p(z\mid x) = \frac{p(x \mid z) p(z)}{p(x)}$
 
 ```General form:``` $p(x) = \frac{f(x)}{NC}$
 
 
-### MCMC:
-Markov Chain Monte Carlo focus on introducing a set of weights to produce a density function for output.
+### 3. MCMC:
 
  ```Markov Chain:``` Each variable $z$ is going to be one of the state in Markov Chain. The steady state is our target varible set.
  
@@ -45,12 +42,11 @@ Markov Chain Monte Carlo focus on introducing a set of weights to produce a dens
 
 
 
-### Variational Inference:
-Variational inference will focus on shrink the gap between actual posterior and an introduced distribution function.
+### 4. Variational Inference:
 
 ```inference distribution: ``` find a "similar" distribution to intractable posterior $q_{\phi}(z \mid x) \approx p_{\theta} (z \mid x) \nonumber$
 
-```KL-Divergence:```  used to determine the different between true posterior and inference distribution $D_{KL}(q_{\phi},p_{\theta}) = E_{q_{\phi}} \left[log q_{\phi}(z \mid x) \right] - E_{q_{\phi}} \left[log p_{\theta}(z,x) \right] + log p_{\theta}(x)$
+```KL-Divergence:```  used to determine the different between true posterior and inference distribution $D_{KL}(q_{\phi},p_{\theta})$
 
 ```Evidence Lower Bound:``` rearrange KL-Divergence to switch question into maximizing ELBO. $L_{\theta,\phi(x)} = E_{q_{\Phi} (z \mid x)} \left[log \, p_{\theta}(x,z) - log \, q_{\Phi}(z\mid x) \right]$
 
