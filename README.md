@@ -58,9 +58,11 @@ But there is lack of research that compiling all methods on the track together -
 ## Experiment:
 Here we will walk through the experiement for [MCMC](HMC_winequality.ipynb) and [VI]().
 
-### MCMC
+### Markov Chain Monte Carlo
 
-Define Linear regression Logic:
+Define Linear regression Logic 
+
+$$prediction = N(\mu, \sigma) \quad where \quad \mu = features * coeffs + bias$$
 ```python
 coeffs = ed.Normal(loc=tf.zeros([D,1]),scale=tf.ones([D,1]),name="coeffs")
 bias = ed.Normal(loc=tf.zeros([1]), scale=tf.ones([1]),name="bias") 
@@ -69,16 +71,49 @@ noise_std = ed.HalfNormal(scale=tf.ones([1]),name="noise_std")
 predictions = ed.Normal(loc=tf.matmul(features, coeffs)+bias,scale=noise_std,name="predictions")
 ```
 
-Create Joint probability function for Markov Chain
-   
+Create Joint probability function for Markov Chain, here edward will help us calculate
+
+$$ Joint Probability = likelihood * prior = p(x \mid z)p(z)$$
 ```python
 def target_log_prob_fn(coeffs, bias, noise_std):
   return ed.make_log_joint_fn(features=x, coeffs=coeffs, bias=bias, noise_std=noise_std, predictions=y)
 ```
 
-Define a No-U-Turn-Sampler Kernel
+Define a No-U-Turn-Sampler Kernel based on HMC that evolved from basic MCMC
 ```python
 kernel = tfp.mcmc.NoUTurnSampler(
     target_log_prob_fn=target_log_prob_fn,
     step_size=step_size)
 ```
+
+Create the MCMC chain, total 10000 states, and we assume last 5000 states will fall on steady distribution.
+```python
+states, kernel_results = tfp.mcmc.sample_chain(num_results=10000,num_burnin_steps=5000,kernel=kernel,current_state
+   =[
+        tf.zeros(coeffs_size, name='init_coeffs'),
+        tf.zeros(bias_size, name='init_bias'),
+        tf.ones(noise_std_size, name='init_noise_std'),
+    ])
+```
+
+Run the MCMC Chain and Collect the results
+```python
+with Timer(), tf.Session() as sess:
+  [coeffs_,bias_,noise_std_,is_accepted_,] = sess.run([coeffs,bias,noise_std,kernel_results.is_accepted,])
+
+coeffs_samples = coeffs_[n_burnin:,:,0]
+bias_samples = bias_[n_burnin:]
+noise_std_samples = noise_std_[n_burnin:]
+accepted_samples = is_accepted_[n_burnin:]
+```
+
+Test model on a record.
+```python
+pred_dist = prediction_distribution[100,:]
+```
+![image](https://github.com/EthanWTL/BayesianNN/assets/97998419/a14b014c-2f71-44d6-addd-e2e3ff00e55e)
+
+The actual lable is 6, we can see if falls into our confidence interval correctly, and we have a probability of about 42% being quality 6.
+
+
+### Variational Inference
