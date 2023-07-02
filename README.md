@@ -10,3 +10,4 @@ Welcome,
 
 This is a repo associate with the ongoing paper [A Survey about Bayesian Inference Power in Math and Machine Learning Perspectives](Bayesian_Inference_first_draft.pdf)
 
+Besides explaining topics included in the paper, this repo will focus on walking through the implementation of [MCMC]() and [Variational Inference]() in the Linear Regression field.
