@@ -17,32 +17,26 @@ After examine the power of Bayesian theorem in math and ML field, It is impressi
 
 But there is lack of research that compiling all methods on the track together -- a comprehensive history of the evolution of Bayesian Theorem. Thus we have this paper that aim at conducting a detailed math analysis of each method, plugins and upgraded for Bayesian Inference.
 
+---
 
-## Background:
-Here are some basic formula that we need for future experiment.
+## Bayesian Theorem:
+Basic Bayesian Theorem in Math field.
 
-[Joint Probability Theorem](https://corporatefinanceinstitute.com/resources/data-science/joint-probability/):
+```Joint Probability Theorem:``` $P(A\mid B) = \frac{\lvert A \cap B \rvert}{\lvert B \rvert}= \frac {P(A \cap B)}{P(B)}$
 
-$$  P(A\mid B) = \frac{\lvert A \cap B \rvert}{\lvert B \rvert}=\frac{\dfrac{\lvert A \cap B \rvert}{\lvert \Omega \rvert}}{\dfrac{\lvert B \rvert}{\lvert \Omega \rvert}} = \frac {P(A \cap B)}{P(B)}  $$
-
-[Bayesian Theorem](https://philpapers.org/rec/SWIBT-2):
-
-$$ P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)} $$
+```Bayesian Inference:``` $P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}$
 
 
 ## Bayesian Neural Network:
-The core about Bayesian NN is trying to find a set of varibles $z$ that will help with output a distribution. Given dataset $x$, we want to find the latent varibles $z$:
+BNN will focus on weight as distribution, so targeting on finding $z$ as latent variable, the posterios is usually intractable.
 
-$$ p(z\mid x) = \frac{p(x \mid z) p(z)}{p(x)} $$
+```latent variables:``` $p(z\mid x) = \frac{p(x \mid z) p(z)}{p(x)}$
 
-$p(x)$ is intractable due to hign dimenionality of Integral while $p(x \mid z)p(z)$ is calculable as the joint probability. So we usually present it like this:
-
-$$p(x) = \frac{f(x)}{NC}$$
-
-Which indicating that we know the posterior is proportional to a known function up to an unknown normalizing constant. Here MCMC and VI come in to investigate the influence brought by the normalizing constant.
+```General form:``` $p(x) = \frac{f(x)}{NC}$
 
 
 ## MCMC:
+Markov Chain Monte Carlo focus on introducing a set of weights to produce a density function for output.
 
  ```Markov Chain:``` Each variable $z$ is going to be one of the state in Markov Chain. The steady state is our target varible set.
  
@@ -50,9 +44,21 @@ Which indicating that we know the posterior is proportional to a known function 
  
  ```No-U-Turn-Sampler:``` eliminating the long term U-turn path, auto tune step size and time in leapfrog method.
 
- Now, let's walk through the experiment with all the knowledge that we mentioned before.
 
 
 ## Variational Inference:
+Variational inference will focus on shrink the gap between actual posterior and an introduced distribution function.
+
+```inference distribution: ``` find a "similar" distribution to intractable posterior $q_{\phi}(z \mid x) \approx p_{\theta} (z \mid x) \nonumber$
+
+```KL-Divergence:```  used to determine the different between true posterior and inference distribution $D_{KL}(q_{\phi},p_{\theta}) = E_{q_{\phi}} \left[log q_{\phi}(z \mid x) \right] - E_{q_{\phi}} \left[log p_{\theta}(z,x) \right] + log p_{\theta}(x)$
+
+```Evidence Lower Bound:``` rearrange KL-Divergence to switch question into maximizing ELBO. $L_{\theta,\phi(x)} = E_{q_{\Phi} (z \mid x)} \left[log \, p_{\theta}(x,z) - log \, q_{\Phi}(z\mid x) \right]$
+
+```Reparameterization trick:``` during backpropgation, introduce noise $\epsilon$, so $z = g(\phi, x, \epsilon)$ to apply gradient on ELBO
+
+  ---
 
 
+## Experiment:
+Here we will walk through the experiement for [MCMC](HMC_winequality.ipynb) and [VI]().
