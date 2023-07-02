@@ -21,12 +21,31 @@ But there is lack of research that compiling all methods on the track together -
 ## Background:
 Here are some basic formula that we need for future experiment.
 
-[Joint Probability Theorem]():
+[Joint Probability Theorem](https://corporatefinanceinstitute.com/resources/data-science/joint-probability/):
 
 $$  P(A\mid B) = \frac{\lvert A \cap B \rvert}{\lvert B \rvert}=\frac{\dfrac{\lvert A \cap B \rvert}{\lvert \Omega \rvert}}{\dfrac{\lvert B \rvert}{\lvert \Omega \rvert}} = \frac {P(A \cap B)}{P(B)}  $$
 
 [Bayesian Theorem](https://philpapers.org/rec/SWIBT-2):
 
 $$ P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)} $$
+
+
+## Bayesian Neural Network:
+The core about Bayesian NN is trying to find a set of varibles $z$ that will help with output a distribution. Given dataset $x$, we want to find the latent varibles $z$:
+
+$$ p(z\mid x) = \frac{p(x \mid z) p(z)}{p(x)} $$
+
+$p(x)$ is intractable due to hign dimenionality of Integral while $p(x \mid z)p(z)$ is calculable as the joint probability. So we usually present it like this:
+
+$$p(x) = \frac{f(x)}{NC}$$
+
+Which indicating that we know the posterior is proportional to a known function up to an unknown normalizing constant. Here MCMC and VI come in to investigate the influence brought by the normalizing constant.
+
+
+## MCMC:
+
+
+
+## Variational Inference:
 
 
