@@ -116,4 +116,35 @@ pred_dist = prediction_distribution[100,:]
 The actual lable is 6, we can see if falls into our confidence interval correctly, and we have a probability of about 42% being quality 6.
 
 
-### Variational Inference
+
+
+## Roadmap
+- [x] First Draft
+- [ ] Second Draft
+- [ ] Implementation
+   - [x] MCMC
+   - [ ] Variational Inference
+ - [ ] Variational Auto Encoder
+
+
+
+
+
+
+## Contact
+Ethan Wang - [e13wang@gmail.com](e13wang@gmail.com) - [Linkedin Profile](https://www.linkedin.com/in/ethan-wang-938588175/)
+
+
+Project Link: [https://github.com/matsudatakeshi27/HeartDiseasePakula](https://github.com/EthanWTL/BayesianNN)
+
+
+
+
+## Acknowledgments:
+* [Back-Propagation Neural Network Versus Logistic Regression in Heart Disease Classification](https://link.springer.com/chapter/10.1007/978-981-13-0680-8_13)
+* [Heart Disease Risk Prediction Using Supervised Machine Learning Algorithms](https://link.springer.com/chapter/10.1007/978-981-99-0412-9_11)
+* [HEART DISEASE PREDICTION USING DATA MINING TECHNIQUES](https://hal.science/hal-02196156/)
+* [A Submodularity-based Agglomerative Clustering Algorithm for the Privacy Funnel](https://www.semanticscholar.org/paper/A-Submodularity-based-Agglomerative-Clustering-for-Ding-Sadeghi/4e7b3b31659c945ed0c953da9fe7af297b3f3675)
+* [Early detection of silent ischaemic heart disease by 24-hour electrocardiographic monitoring of active subjects.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC458846/)
+* [Development of a federated learning approach to predict acute kidney injury in adult hospitalized patients with COVID-19 in New York City](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8328073/)
+* [Federated learning for multi-center imaging diagnostics: a simulation study in cardiovascular disease](https://www.nature.com/articles/s41598-022-07186-4)
