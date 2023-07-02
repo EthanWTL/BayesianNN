@@ -5,7 +5,6 @@
 ![Licence](https://img.shields.io/github/license/EthanWTL/BayesianNN)
 ![Issues](https://img.shields.io/github/issues/EthanWTL/BayesianNN)
 
-## Introduction:
 Welcome,
 
 This is a repo associate with the ongoing paper [A Survey about Bayesian Inference Power in Math and Machine Learning Perspectives](Bayesian_Inference_first_draft.pdf)
@@ -18,8 +17,8 @@ After examine the power of Bayesian theorem in math and ML field, It is impressi
 But there is lack of research that compiling all methods on the track together -- a comprehensive history of the evolution of Bayesian Theorem. Thus we have this paper that aim at conducting a detailed math analysis of each method, plugins and upgraded for Bayesian Inference.
 
 ---
-
-## Bayesian Theorem:
+## Backgrounds review: 
+### Bayesian Theorem:
 Basic Bayesian Theorem in Math field.
 
 ```Joint Probability Theorem:``` $P(A\mid B) = \frac{\lvert A \cap B \rvert}{\lvert B \rvert}= \frac {P(A \cap B)}{P(B)}$
@@ -27,7 +26,7 @@ Basic Bayesian Theorem in Math field.
 ```Bayesian Inference:``` $P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}$
 
 
-## Bayesian Neural Network:
+### Bayesian Neural Network:
 BNN will focus on weight as distribution, so targeting on finding $z$ as latent variable, the posterios is usually intractable.
 
 ```latent variables:``` $p(z\mid x) = \frac{p(x \mid z) p(z)}{p(x)}$
@@ -35,7 +34,7 @@ BNN will focus on weight as distribution, so targeting on finding $z$ as latent 
 ```General form:``` $p(x) = \frac{f(x)}{NC}$
 
 
-## MCMC:
+### MCMC:
 Markov Chain Monte Carlo focus on introducing a set of weights to produce a density function for output.
 
  ```Markov Chain:``` Each variable $z$ is going to be one of the state in Markov Chain. The steady state is our target varible set.
@@ -46,7 +45,7 @@ Markov Chain Monte Carlo focus on introducing a set of weights to produce a dens
 
 
 
-## Variational Inference:
+### Variational Inference:
 Variational inference will focus on shrink the gap between actual posterior and an introduced distribution function.
 
 ```inference distribution: ``` find a "similar" distribution to intractable posterior $q_{\phi}(z \mid x) \approx p_{\theta} (z \mid x) \nonumber$
