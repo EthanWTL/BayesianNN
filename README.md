@@ -8,5 +8,5 @@
 ## Introduction:
 Welcome,
 
-This is a repo associate with the paper [A Survey about Bayesian Inference Power in Math and Machine Learning Perspectives]()
+This is a repo associate with the ongoing paper [A Survey about Bayesian Inference Power in Math and Machine Learning Perspectives](Bayesian_Inference_first_draft.pdf)
 
