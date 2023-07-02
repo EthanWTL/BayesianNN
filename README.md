@@ -57,3 +57,28 @@ But there is lack of research that compiling all methods on the track together -
 
 ## Experiment:
 Here we will walk through the experiement for [MCMC](HMC_winequality.ipynb) and [VI]().
+
+### MCMC
+
+Define Linear regression Logic:
+```python
+coeffs = ed.Normal(loc=tf.zeros([D,1]),scale=tf.ones([D,1]),name="coeffs")
+bias = ed.Normal(loc=tf.zeros([1]), scale=tf.ones([1]),name="bias") 
+noise_std = ed.HalfNormal(scale=tf.ones([1]),name="noise_std")
+
+predictions = ed.Normal(loc=tf.matmul(features, coeffs)+bias,scale=noise_std,name="predictions")
+```
+
+Create Joint probability function for Markov Chain
+   
+```python
+def target_log_prob_fn(coeffs, bias, noise_std):
+  return ed.make_log_joint_fn(features=x, coeffs=coeffs, bias=bias, noise_std=noise_std, predictions=y)
+```
+
+Define a No-U-Turn-Sampler Kernel
+```python
+kernel = tfp.mcmc.NoUTurnSampler(
+    target_log_prob_fn=target_log_prob_fn,
+    step_size=step_size)
+```
