@@ -120,10 +120,10 @@ The actual lable is 6, we can see if falls into our confidence interval correctl
 
 ## Roadmap
 - [x] First Draft
-- [ ] Second Draft
-- [ ] Implementation
+- [x] Second Draft
+- [x] Implementation
    - [x] MCMC
-   - [ ] Variational Inference
+   - [x] Variational Inference
  - [ ] Variational Auto Encoder
 
 
